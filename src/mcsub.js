@@ -12,8 +12,8 @@ export default class Mcsub {
 		this.element = document.querySelector(element);
 		this.config.user === '' && Mcsub.require('user id'); // Check
 		this.config.list === '' && Mcsub.require('list id'); // Check
-		this.form = this.element.children[0];
-		this.button = this.form.querySelector('button[type="submit"]');
+		this.form = this.element.querySelector('form');
+		this.button = this.config.button || this.form.querySelector('button[type="submit"]');
 		this.inputs = this.form.querySelectorAll('input');
 		this.response = this.element.querySelector(this.config.response);
 		this.robot(`b_${this.config.user}_${this.config.list}`);
@@ -35,11 +35,11 @@ export default class Mcsub {
 			list: '', // Required
 			callback: 'cb',
 			response: '#response',
-			onInit: () => {},
-			onSubmit: () => {},
-			complete: () => {},
-			onSuccess: () => {},
-			onError: () => {}
+			onInit: () => { },
+			onSubmit: () => { },
+			complete: () => { },
+			onSuccess: () => { },
+			onError: () => { }
 		};
 
 		const userSettings = options;
@@ -102,7 +102,7 @@ export default class Mcsub {
 	 * Apply Default Mcsub attributes
 	 * Will act as a fallback.
 	 */
-	default () {
+	default() {
 		Mcsub.setAttrs(this.form, {
 			'action': this.form.action.replace('/post', `/post?u=${this.config.user}&id=${this.config.list}`),
 			'method': 'post',

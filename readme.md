@@ -83,6 +83,9 @@ The `callback` option allows you to define a custom callback parameter. It defau
 **response**<br>
 The `response` option defaults to an element within your `<form>` with the `id` of `#response`. Mailchimp will return responses which show up within this element and depending on the response type, a class of either `.error` or `.success` will be added to the element giving you additional styling. For best practice always add a `style="display:none;"` attribute to the response element. McSub will remove this upon response callback by default.
 
+**button**<br>
+The selector for the submit button can be choosed here. Default selector is `button[type="submit"]`
+
 **onInit()**<br>
 The `onInit()` callback option function is run on init after the form subit listener is applied.
 
